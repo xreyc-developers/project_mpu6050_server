@@ -2,6 +2,15 @@ const app = require('express')();
 const http = require('http').Server(app);
 const io = require('socket.io')(http, { cors: { origin: "http://192.168.1.241:3000" }});
 const cors = require('cors');
+// MPU
+var i2c = require('i2c-bus');
+var MPU6050 = require('i2c-mpu6050');
+
+var address = 0x68;
+var i2c1 = i2c.openSync(1); 
+var sensor = new MPU6050(i2c1, address);
+var data = sensor.readSync();
+console.log(data);
 
 app.use(cors());
 let isPositive = true;
