@@ -6,6 +6,10 @@ const cors = require('cors');
 app.use(cors());
 let isPositive = true;
 
+app.get('/', function(req, res) {
+   res.send('Hello World!')
+ });
+
 setInterval(() => {
    const newValueX = Math.round(Math.random() * 1000);
    const newValueY = Math.round(Math.random() * 1000);
